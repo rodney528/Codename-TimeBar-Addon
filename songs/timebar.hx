@@ -40,16 +40,25 @@ function hideNumbers(text:String):Void {
 }
 
 function formatTime(time:Float):String {
-	var elapsed:String = FlxStringUtil.formatTime(time, ModOptions.tbTimeMS);
-	var remainder:String = FlxStringUtil.formatTime(inst.length / 1000 - time, ModOptions.tbTimeMS);
-	var result:String = hideNumbers(switch (ModOptions.tbTimeType) {
-		case 'elapsed': elapsed;
-		case 'remainder': remainder;
-		case 'both': remainder + ' ~ ' + elapsed;
-		case 'nothing': '';
-	});
-	var end:String = (ModOptions.tbTimeType == 'nothing' ? '' : ' / ') + hideNumbers(StringTools.replace(FlxStringUtil.formatTime(inst.length / 1000, ModOptions.tbTimeMS), '.00', ''));
-	return (ModOptions.tbSongName ? (SONG.meta.displayName + ' / ') : '') + result + (ModOptions.tbShowEndTime ? end : '');
+	var result:Array<String> = [];
+
+	if (ModOptions.tbSongName)
+		result.push(SONG.meta.displayName);
+
+	if (ModOptions.tbTimeType != 'nothing') {
+		var elapsed:String = FlxStringUtil.formatTime(time, ModOptions.tbTimeMS);
+		var remainder:String = FlxStringUtil.formatTime(inst.length / 1000 - time, ModOptions.tbTimeMS);
+		result.push(hideNumbers(switch (ModOptions.tbTimeType) {
+			case 'elapsed': elapsed;
+			case 'remainder': remainder;
+			case 'both': remainder + ' ~ ' + elapsed;
+		}));
+	}
+
+	if (ModOptions.tbShowEndTime)
+		result.push(hideNumbers(StringTools.replace(FlxStringUtil.formatTime(inst.length / 1000, ModOptions.tbTimeMS), '.00', '')));
+
+	return result.join(' / ');
 }
 
 function postUpdate(elapsed:Float):Void
