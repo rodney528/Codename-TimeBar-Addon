@@ -1,0 +1,20 @@
+<!DOCTYPE codename-mod-options>
+<menu name="Time Bar" desc="Settings for Rodney's TimeBar Addon.">
+	<checkbox id="tbEnable" name="Enable TimeBar" desc="Do you wish to enable the timebar?"/>
+
+	<checkbox id="tbSongName" name="Show Song Name" desc="Should the timebar text show the song display name?"/>
+
+	<choice id="tbTimeType" name="Time Type" desc="How should it show the time?">
+		<value name="Elapsed" value="elapsed"/>
+
+		<value name="Remaining" value="remainder"/>
+
+		<value name="Dont Show" value="nothing"/>
+
+		<value name="How about Both?" value="both"/>
+	</choice>
+
+	<checkbox id="tbShowEndTime" name="Show End Time" desc="Should the timebar text show the end time?"/>
+
+	<checkbox id="tbTimeMS" name="Show Milliseconds" desc="Should the timebar text show milliseconds?                                                                                                   Note: This won't show on end time if the song has a perfect length."/>
+</menu>
