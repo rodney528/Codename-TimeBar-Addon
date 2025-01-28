@@ -1,0 +1,16 @@
+{
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": "always"
+	},
+
+	"files.associations": {
+		"*.json": "jsonc", // cne has comment support
+		"*.{hx,hscript,hsc,hxs}": "haxe"
+	},
+	"files.enableTrash": true,
+	"files.insertFinalNewline": false,
+
+	"haxe.enableBraceBodyWrapping": true,
+	"haxe.enableExtendedIndentation": true,
+	"haxe.importsSortOrder": "stdlib -> libs -> project"
+}
