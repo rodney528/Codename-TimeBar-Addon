@@ -9,7 +9,7 @@
 
 		<value name="Remaining" value="remainder"/>
 
-		<value name="Dont Show" value="nothing"/>
+		<value name="Don't Show" value="nothing"/>
 
 		<value name="How about Both?" value="both"/>
 	</choice>
