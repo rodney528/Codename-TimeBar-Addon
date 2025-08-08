@@ -14,7 +14,7 @@ function postCreate():Void {
 	add(timeBarBG);
 
 	timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, FlxBarFillDirection.LEFT_TO_RIGHT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8), inst, 'time', 0, inst.length);
-	timeBar.createFilledBar(0xff363636, SONG.meta.parsedColor ?? FlxColor.fromString(SONG.meta.color ?? '#C0C0C0'));
+	timeBar.createFilledBar(0xff363636, SONG.meta.color ?? 0xFFC0C0C0);
 	timeBar.numDivisions = timeBar.width;
 	add(timeBar);
 
