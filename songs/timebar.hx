@@ -23,7 +23,7 @@ function postCreate():Void {
 	add(timeText);
 
 	for (e in [timeBarBG, timeBar, timeText]) {
-		if (!ModOptions.tbEnable) {
+		if (!TimeBarOptions.enable) {
 			e.visible = false;
 			e.alpha = 0;
 		}
@@ -42,25 +42,25 @@ function hideNumbers(text:String):Void {
 function formatTime(time:Float):String {
 	var result:Array<String> = [];
 
-	if (ModOptions.tbSongName)
+	if (TimeBarOptions.songName)
 		result.push(SONG.meta.displayName);
 
-	if (ModOptions.tbTimeType != 'nothing') {
-		var elapsed:String = FlxStringUtil.formatTime(time, ModOptions.tbTimeMS);
-		var remainder:String = FlxStringUtil.formatTime(inst.length / 1000 - time, ModOptions.tbTimeMS);
-		result.push(hideNumbers(switch (ModOptions.tbTimeType) {
+	if (TimeBarOptions.timeType != 'nothing') {
+		var elapsed:String = FlxStringUtil.formatTime(time, TimeBarOptions.timeMS);
+		var remainder:String = FlxStringUtil.formatTime(inst.length / 1000 - time, TimeBarOptions.timeMS);
+		result.push(hideNumbers(switch (TimeBarOptions.timeType) {
 			case 'elapsed': elapsed;
 			case 'remainder': remainder;
 			case 'both': remainder + ' ~ ' + elapsed;
 		}));
 	}
 
-	if (ModOptions.tbShowEndTime)
-		result.push(hideNumbers(StringTools.replace(FlxStringUtil.formatTime(inst.length / 1000, ModOptions.tbTimeMS), '.00', '')));
+	if (TimeBarOptions.showEndTime)
+		result.push(hideNumbers(StringTools.replace(FlxStringUtil.formatTime(inst.length / 1000, TimeBarOptions.timeMS), '.00', '')));
 
 	return result.join(' / ');
 }
 
 function postUpdate(elapsed:Float):Void
-	if (ModOptions.tbEnable && inst.playing)
+	if (TimeBarOptions.enable && inst.playing)
 		timeText.text = formatTime(inst.time / 1000);

@@ -1,9 +1,11 @@
-static var ModOptions = FlxG.save.data;
+static var TimeBarOptions = FlxG.save.data.RODNEY_TIMEBAR;
 
 function new() {
-	ModOptions.tbEnable ??= false;
-	ModOptions.tbSongName ??= false;
-	ModOptions.tbTimeType ??= 'elapsed';
-	ModOptions.tbShowEndTime ??= true;
-	ModOptions.tbTimeMS ??= false;
+	TimeBarOptions = FlxG.save.data.RODNEY_TIMEBAR ??= {
+		enable: true,
+		songName: false,
+		timeType: 'elapsed',
+		showEndTime: true,
+		timeMS: false
+	}
 }
